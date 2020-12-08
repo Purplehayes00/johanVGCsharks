@@ -1,13 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace johanVGCsharks
 {
     
-    class person
+    class Person
     {
+        private string firstname;
+        private string lastname;
+        public Person()
+        {
+
+        }
+
+        public Person(string firstname, string lastname)
+        {
+            this.firstname = firstname;
+            this.lastname= lastname;
+        }
+        public string FirstName
+        {
+            get
+            {
+                return firstname;
+            }
+            set
+            {
+                
+                firstname= value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return lastname;
+            }
+            set
+            {
+                lastname = value;
+            }
+
+        }
 
     }
-    class medlem
+    class Medlem : Person
     {
 
     }
@@ -18,37 +56,55 @@ namespace johanVGCsharks
             Console.WriteLine("Hej och välkommen till inlämningsuppgift2! \n" +
                  "Skriv vilken grupp du tillhör: ");
             inloggning();
+            programm();
+           
+
+            Person JohanRohdin = new Person("Johan", "Rohdin");
+            //List<Person> listOfPersoner = new List<Person>() { JohanRohdin };
+
+            Console.WriteLine($"{JohanRohdin.LastName } is of the type {JohanRohdin.FirstName}");
 
         }
 
         private static void inloggning()
         {
-            string fras = Console.ReadLine();
-            while (fras == "CSharks" || fras == "csharks" || fras == "cSharks" || fras == "CSHARKS")
+            bool rätt = true;
+            while (rätt) 
             {
-                Console.WriteLine("Vad vill du göra? \n 1. Skriv ut alla namn i gruppen \n 2. Skriv ut detaljer om gruppmedlemmar \n 3. Skriv ut driv till programmering   \n 4. Ta bort medlem från gruppen ");
-                int svar = Convert.ToInt32(Console.Read());
-                if (svar == 1)
+            string fras = Console.ReadLine();
+            if (fras == "CSharks" || fras == "csharks" || fras == "cSharks" || fras == "CSHARKS")
+            {
+                Console.WriteLine("Välkommen Cshark-Medlemm");
+                    break;
+            }
+            else
                 {
-
+                    Console.WriteLine("Tyvärr fel svar!");
                 }
-                else if (svar == 2)
-                {
+             }
+        }
+        private static void programm()
+        {
+            Person Tove= new Person("Tove", "Seger");
+            Person Oskar = new Person("Oskar", "Kling");
+            Person Elias = new Person("Elias", "Hjelm");
+            Person Viktor = new Person("Viktor", "Salmberg");
+            Person Johan = new Person("Johan", "Rohdin");
+            Person Christopher = new Person("Christopher", "Brizet");
+            Person Robert = new Person("Robert", "Bunjaku");
+            Person Fisnik= new Person("Fisknik", "Balija");
+            List<Person> listOfPersoner = new List<Person>() { Tove, Oskar, Elias, Viktor, Johan, Christopher, Robert, Fisnik };
 
-
-
-
-
-                }
-
-                else if (svar == 3)
-                {
-
-                }
-                else if (svar == 4)
-                {
-
-                }
+            foreach (Person skurk in listOfPersoner)
+            {
+                Console.WriteLine($"{skurk.FirstName} {skurk.LastName}");
             }
         }
+        
+        static bool Avsluta()
+        {
+            Console.WriteLine("Du valde att avsluta, tja!");
+            return false;
+        }
+    }
     }
