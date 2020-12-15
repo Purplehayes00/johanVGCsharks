@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace johanVGCsharks
 {
@@ -125,20 +126,32 @@ namespace johanVGCsharks
             }
         }
         //Metoden för programmet
-        private static void programm()
+        public static void programm()
         {
             //Medlemmar i Klassen
-            Person Tove = new Person("Tove", "Seger");
-            Person Oskar = new Person("Oskar", "Kling");
-            Person Elias = new Person("Elias", "Hjelm");
-            Person Viktor = new Person("Viktor", "Salmberg");
-            Person Johan = new Person("Johan", "Rohdin");
-            Person Christopher = new Person("Christopher", "Brizet");
-            Person Robert = new Person("Robert", "Bunjaku");
-            Person Fisnik = new Person("Fisknik", "Balija");
+            Person Tove = new Person("Tove", "Seger,");
+            Person Oskar = new Person("Oskar", "Kling,");
+            Person Elias = new Person("Elias", "Hjelm,");
+            Person Viktor = new Person("Viktor", "Salmberg,");
+            Person Johan = new Person("Johan", "Rohdin,");
+            Person Christopher = new Person("Christopher", "Brizet,");
+            Person Robert = new Person("Robert", "Bunjaku,");
+            Person Fisnik = new Person("Fisknik", "Balija.");
+
+           
+            Medlem ToveS = new Medlem("Gift", "December", "Villa", "28", "Löpning", "Saltlakrits", "Biomedicin(Fysiskträning)", "Sommar", "Vegetarisk", "Hund");
+            Medlem OskarK = new Medlem("Sambo", "November", "Lägenhet", "30", "Datorspel", "Kechoklad", "Ekonomi och Software Engineer", "Höst", "Kött gärna biff", "Hund och katt");
+            Medlem EliasH = new Medlem("Sambo", "Augusti", "Lägenhet", "22", "Datorspel", "Choklad", "Interatktionsdesigner 0,5 år", "Sommar", "Vegetarisk", "Hund");
+            Medlem ViktorS = new Medlem("Singel", "Januari", "Lägenhet", "30", "Spela Gitarr", "Choklad", "Arabiska", "Höst", "Vegetarisk och bacon", "Katt");
+            Medlem JohanR = new Medlem("Sambo", "Mars", "Lägenhet", "27", "Poker/Fotboll", "Blandgodis", "Nätverksdrift", "Vinter", "Pasta", "Hund");
+            Medlem ChristopherB = new Medlem("Sambo", "September", "Villa", "35", "Gittar, spela och läsa", "Sötlakrits", "Installationstekniker 1 år", "Höst", "Stinky French Cheeses", "Korp");
+            Medlem RobertB = new Medlem("Gift", "November", "Lägenhet", "35", "Fiska", "Mjölkchoklad", "IT-Säkerhet", "Sommar", "Pasta", "Hund");
+            Medlem FisnikB = new Medlem("Flickvän", "Feburari", "Villa", "32", "Fotboll", "Choklad", "Masterexamen i Geologi", "Sommar", "Allätare, föredrar kött", "Hund");
+
+
             //Lista med inmatade Medlemmar
             List<Person> listOfPersoner = new List<Person>() { Tove, Oskar, Elias, Viktor, Johan, Christopher, Robert, Fisnik };
-
+            List<Medlem> listOfMedlemmar = new List<Medlem>() { ToveS, OskarK, EliasH, ViktorS, JohanR, ChristopherB, RobertB, FisnikB };
 
             bool forsätta = true;
 
@@ -160,27 +173,137 @@ namespace johanVGCsharks
                 }
                else if (Action == 2)
                 {
-
+                    Information(ToveS, OskarK, EliasH, ViktorS, JohanR, ChristopherB, RobertB, FisnikB, listOfPersoner);
                 }
-               else if (Action == 3)
+                else if (Action == 3)
                 {
 
                 }
                else if (Action == 4)
                 {
-                    break;
+                    Remove();
                 }
                 else if (Action == 5)
                 {
                     forsätta = Avsluta();
+
+
                 }
 
+            }
+            //Metod för att ta bort medlemmar
+             void Remove()
+            {
+                bool forsätta = true;
+                while(forsätta)
+                {
+                    Console.WriteLine("Vem vill du ta bort ur gruppen?");
+                    Console.WriteLine("1. Tove \n 2.Oskar \n 3. Elias \n 4. Viktor \n 5. Johan \n 6. Christopher \n 7. Robert \n 8. Fiznik \n 9. Gå tillbaka");
+                    string ChoiceOfAction = Console.ReadLine();
+                    int Action = Convert.ToInt32(ChoiceOfAction);
+                    if (Action == 1) { listOfPersoner.Remove(Tove); }
+                    if (Action == 2) { listOfPersoner.Remove(Oskar); }
+                    if (Action == 3) { listOfPersoner.Remove(Elias); }
+                    if (Action == 4) { listOfPersoner.Remove(Viktor); }
+                    if (Action == 5) { listOfPersoner.Remove(Johan); }
+                    if (Action == 6) { listOfPersoner.Remove(Christopher); }
+                    if (Action == 7) { listOfPersoner.Remove(Robert); }
+                    if (Action == 8) { listOfPersoner.Remove(Fisnik); }
+                    if (Action == 9) { break; }
+                    else
+                    {
+                        Console.WriteLine("Fel karaktär");
+                    }
+
+
+                }
+                
             }
             //Metod för att avsluta programmet
             static bool Avsluta()
             {
-                Console.WriteLine("Du valde att avsluta, tja!");
+                Console.WriteLine("Du valde att avsluta, hejdå. Välkommen och spela igen när du vill!");
                 return false;
+            }
+        }
+
+        private static void Information(Medlem ToveS, Medlem OskarK, Medlem EliasH, Medlem ViktorS, Medlem JohanR, Medlem ChristopherB, Medlem RobertB, Medlem FisnikB, List<Person> listOfPersoner)
+        {
+            Console.WriteLine("Vem vill du skriva ut information om? \n Skriv deras förnamn så kommer det upp!");
+            int count = 1;
+            foreach (var person in listOfPersoner)
+            {
+
+                Console.WriteLine($" {count} {person.FirstName} {person.LastName}");
+                count++;
+            }
+            string frasTvå = Console.ReadLine();
+
+            bool medlemmar = true;
+
+            while (medlemmar)
+            {
+
+                if (frasTvå == "Tove" || frasTvå == "tove" || frasTvå == "tOVE" || frasTvå == "TOVE")
+                {
+
+                    Console.WriteLine($"{ToveS.CivilStånd} \n {ToveS.FödelseDag} \n {ToveS.Boende} \n {ToveS.Ålder} \n {ToveS.Hobby} " +
+                        $"\n {ToveS.FavoritGodis} \n {ToveS.Utbildning} \n {ToveS.FavoritÅrstid} \n {ToveS.FavoritMat} \n {ToveS.FavoritDjur}");
+                    break;
+
+                }
+                if (frasTvå == "Oskar" || frasTvå == "OSKAR" || frasTvå == "oskar" || frasTvå == "oSKAR")
+                {
+                    Console.WriteLine($"{OskarK.CivilStånd} \n {OskarK.FödelseDag} \n {OskarK.Boende} \n {OskarK.Ålder} \n {OskarK.Hobby} " +
+                        $"\n {OskarK.FavoritGodis} \n {OskarK.Utbildning} \n {OskarK.FavoritÅrstid} \n {OskarK.FavoritMat} \n {OskarK.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Elias" || frasTvå == "elias" || frasTvå == "ELIAS" || frasTvå == "eLIAS")
+                {
+                    Console.WriteLine($"{EliasH.CivilStånd} \n {EliasH.FödelseDag} \n {EliasH.Boende} \n {EliasH.Ålder} \n {EliasH.Hobby} " +
+                        $"\n {EliasH.FavoritGodis} \n {EliasH.Utbildning} \n {EliasH.FavoritÅrstid} \n {EliasH.FavoritMat} \n {EliasH.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Viktor" || frasTvå == "viktor" || frasTvå == "VIKTOR" || frasTvå == "vIKTOR")
+                {
+                    Console.WriteLine($"{ViktorS.CivilStånd} \n {ViktorS.FödelseDag} \n {ViktorS.Boende} \n " +
+                        $"{ViktorS.Ålder} \n {ViktorS.Hobby} \n {ViktorS.FavoritGodis} \n {ViktorS.Utbildning} \n {ViktorS.FavoritÅrstid} \n {ViktorS.FavoritMat} \n {ViktorS.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Johan" || frasTvå == "johan" || frasTvå == "JOHAN" || frasTvå == "jOHAN")
+                {
+                    Console.WriteLine($"{JohanR.CivilStånd} \n {JohanR.FödelseDag} \n {JohanR.Boende} \n " +
+                        $"{JohanR.Ålder} \n {JohanR.Hobby} \n {JohanR.FavoritGodis} \n {JohanR.Utbildning} \n {JohanR.FavoritÅrstid} \n {JohanR.FavoritMat} \n {JohanR.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Christopher" || frasTvå == "Christoffer" || frasTvå == "CHRISTOPHER" || frasTvå == "cHRISTOPHER")
+                {
+                    Console.WriteLine($"{ChristopherB.CivilStånd} \n {ChristopherB.FödelseDag} \n {ChristopherB.Boende} \n " +
+                        $"{ChristopherB.Ålder} \n {ChristopherB.Hobby} \n {ChristopherB.FavoritGodis} \n {ChristopherB.Utbildning} \n {ChristopherB.FavoritÅrstid} \n" +
+                        $" {ChristopherB.FavoritMat} \n {ChristopherB.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Robert" || frasTvå == "robert" || frasTvå == "ROBERT" || frasTvå == "rOBERT")
+                {
+                    Console.WriteLine($"{RobertB.CivilStånd} \n {RobertB.FödelseDag} \n {RobertB.Boende} \n " +
+                        $"{RobertB.Ålder} \n {RobertB.Hobby} \n {RobertB.FavoritGodis} \n {RobertB.Utbildning} \n {RobertB.FavoritÅrstid} \n {RobertB.FavoritMat} \n {RobertB.FavoritDjur}");
+                    break;
+                }
+                if (frasTvå == "Fisnik" || frasTvå == "fISNIK" || frasTvå == "FISNIK" || frasTvå == "fISNIK")
+                {
+                    Console.WriteLine($"{FisnikB.CivilStånd} \n {FisnikB.FödelseDag} \n {FisnikB.Boende} \n " +
+                        $"{FisnikB.Ålder} \n {FisnikB.Hobby} \n {FisnikB.FavoritGodis} \n {FisnikB.Utbildning} \n {FisnikB.FavoritÅrstid} \n {FisnikB.FavoritMat} \n {FisnikB.FavoritDjur}");
+                    break;
+
+                }
+                else
+                {
+                    Console.WriteLine("Fel karaktär");
+
+                }
+
+
+
             }
         }
     }
