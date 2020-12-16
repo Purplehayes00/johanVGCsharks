@@ -91,6 +91,21 @@ namespace johanVGCsharks
         public string FavoritDjur { get { return favoritDjur; } set { favoritDjur = value; } }
 
     }
+    //Klassen om strängen om drivet till programmering
+    class drivTillProgrammering
+    {
+        private string driv;
+
+        public drivTillProgrammering()
+        {
+
+        }
+        public drivTillProgrammering(string driv)
+        {
+            this.driv = driv;
+        }
+        public string Driv {get { return driv; }  set { driv = value; } }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -101,7 +116,7 @@ namespace johanVGCsharks
             //Metod för inloggning
             inloggning();
             //Metod för programmet om inloggningen lyckas
-            programm();
+            Programm();
 
 
 
@@ -126,7 +141,7 @@ namespace johanVGCsharks
             }
         }
         //Metoden för programmet
-        public static void programm()
+        public static void Programm()
         {
             //Medlemmar i Klassen
             Person Tove = new Person("Tove", "Seger,");
@@ -138,7 +153,7 @@ namespace johanVGCsharks
             Person Robert = new Person("Robert", "Bunjaku,");
             Person Fisnik = new Person("Fisknik", "Balija.");
 
-           
+           //Information om medlemmar i klassen
             Medlem ToveS = new Medlem("Gift", "December", "Villa", "28", "Löpning", "Saltlakrits", "Biomedicin(Fysiskträning)", "Sommar", "Vegetarisk", "Hund");
             Medlem OskarK = new Medlem("Sambo", "November", "Lägenhet", "30", "Datorspel", "Kechoklad", "Ekonomi och Software Engineer", "Höst", "Kött gärna biff", "Hund och katt");
             Medlem EliasH = new Medlem("Sambo", "Augusti", "Lägenhet", "22", "Datorspel", "Choklad", "Interatktionsdesigner 0,5 år", "Sommar", "Vegetarisk", "Hund");
@@ -147,6 +162,11 @@ namespace johanVGCsharks
             Medlem ChristopherB = new Medlem("Sambo", "September", "Villa", "35", "Gittar, spela och läsa", "Sötlakrits", "Installationstekniker 1 år", "Höst", "Stinky French Cheeses", "Korp");
             Medlem RobertB = new Medlem("Gift", "November", "Lägenhet", "35", "Fiska", "Mjölkchoklad", "IT-Säkerhet", "Sommar", "Pasta", "Hund");
             Medlem FisnikB = new Medlem("Flickvän", "Feburari", "Villa", "32", "Fotboll", "Choklad", "Masterexamen i Geologi", "Sommar", "Allätare, föredrar kött", "Hund");
+
+            //Strängen om driv till programmering om medlemmar i klassen
+
+            
+            
 
 
             //Lista med inmatade Medlemmar
@@ -177,7 +197,7 @@ namespace johanVGCsharks
                 }
                 else if (Action == 3)
                 {
-
+                    ProgrammeringSträng();
                 }
                else if (Action == 4)
                 {
@@ -189,6 +209,7 @@ namespace johanVGCsharks
 
 
                 }
+                
 
             }
             //Metod för att ta bort medlemmar
@@ -227,8 +248,11 @@ namespace johanVGCsharks
             }
         }
 
+        //Metoden med information(Boende/Mat osv.)
         private static void Information(Medlem ToveS, Medlem OskarK, Medlem EliasH, Medlem ViktorS, Medlem JohanR, Medlem ChristopherB, Medlem RobertB, Medlem FisnikB, List<Person> listOfPersoner)
         {
+            
+
             Console.WriteLine("Vem vill du skriva ut information om? \n Skriv deras förnamn så kommer det upp!");
             int count = 1;
             foreach (var person in listOfPersoner)
@@ -304,6 +328,78 @@ namespace johanVGCsharks
 
 
 
+            }
+        }
+        private static void ProgrammeringSträng()
+        {
+            drivTillProgrammering ToveSeger = new drivTillProgrammering("Viljan att skapa en kreativ och intellektuell tillvaro, oberoende av fasta klockslag.");
+            drivTillProgrammering OskarKling = new drivTillProgrammering("Kreativt, roligt, kontroll och problemlösning.");
+            drivTillProgrammering EliasHjelm = new drivTillProgrammering("Att få arbeta med något som är kreativt och som jag alltid kan utvecklas inom");
+            drivTillProgrammering ViktorSalmberg = new drivTillProgrammering("Kicken att förstå nya koncept och möjligheten till ett utvecklande arbetsliv.");
+            drivTillProgrammering JohanRohdin = new drivTillProgrammering("Egna arbetstider, roligt och intressant.");
+            drivTillProgrammering ChristopherBrizet = new drivTillProgrammering("Planera, skapa och ett enormt svängrum för kreativitet(plus fantasin om att erövra världen).");
+            drivTillProgrammering RobertBunjaku = new drivTillProgrammering("Kombinera tidigare utbildning med nya kunskaper för att släppa lös den kreativa kraften och styra/forma egna framtiden.");
+            drivTillProgrammering FisnikBalija = new drivTillProgrammering("Fascineras av hur något så enkelt med samtidigt komplicerat kan skapa något så kraftfullt och användbart. Vidare så är" +
+                " programmering oerhört utmanande, spännande och framförallt roligt!");
+            
+
+            Console.WriteLine("Vems driv till programmering vill du se? Skriv deras förnamn! Alternativt skriv Avsluta, Quit eller q/Q för avsluta. ");
+           string frasTvå = Console.ReadLine();
+
+            while (true)
+
+            {
+                if (frasTvå == "Tove")
+                {
+                    Console.WriteLine($"{ToveSeger.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Oskar")
+                {
+                    Console.WriteLine($"{OskarKling.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Elias")
+                {
+                    Console.WriteLine($"{EliasHjelm.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Viktor")
+                {
+                    Console.WriteLine($"{ViktorSalmberg.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Johan")
+                {
+                    Console.WriteLine($"{JohanRohdin.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Christopher")
+                {
+                    Console.WriteLine($"{ChristopherBrizet.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Robert")
+                {
+                    Console.WriteLine($"{RobertBunjaku.Driv }");
+                    Console.ReadKey();
+                }
+                if (frasTvå == "Fisnik")
+                {
+                    Console.WriteLine($"{FisnikBalija.Driv }");
+                    Console.ReadKey();
+                    break;
+                }
+                if(frasTvå=="Avsluta"||frasTvå=="Quit"||frasTvå=="q"||frasTvå=="q")
+                {
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("Det finns ingen som heter så!");
+                    
+                } 
             }
         }
     }
